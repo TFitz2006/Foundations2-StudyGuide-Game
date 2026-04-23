@@ -1,6 +1,6 @@
-# Foundations II Study Game
+# Tommy Fitzgerald's Foundations 2 Study Guide
 
-An interactive, browser-based study game for **CSE 2331 (Foundations II)** final exam review. One floor per unit, with labs that mirror the review-packet question styles.
+An interactive, browser-based study guide for **CSE 2331 (Foundations II)** final exam review. One section per unit, with labs that mirror the review-packet question styles.
 
 ## Play it now
 
@@ -21,7 +21,7 @@ Every lab is scoped to exactly what the course PDFs cover — no extra operation
 
 ## How to study with it
 
-1. Pick a floor on the left.
+1. Pick a unit on the left.
 2. Read the **study guide** card at the top — this is the distilled review-packet pattern.
 3. Run the **interactive lab** to practice: build a heap, click z on a Red-Black tree, pick MST edges, etc.
 4. Compare your reasoning to the explanations that appear as you step through.
