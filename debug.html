@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Tower Debug</title>
+  </head>
+  <body>
+    <div id="status">booting</div>
+    <div id="boot-status"></div>
+    <div id="tower-list"></div>
+    <p id="unit-kicker"></p>
+    <h2 id="unit-title"></h2>
+    <div id="unit-badge"></div>
+    <p id="unit-summary"></p>
+    <div id="unit-focus"></div>
+    <ul id="unit-review"></ul>
+    <p id="unit-mechanic"></p>
+    <p id="unit-friend-hook"></p>
+    <p id="lab-caption"></p>
+    <div id="lab-mount"></div>
+    <script>
+      (function () {
+        var status = document.getElementById("status");
+        window.addEventListener("error", function (event) {
+          status.textContent =
+            "error: " +
+            String(event && event.message) +
+            " @ " +
+            String((event && event.filename) || "unknown") +
+            ":" +
+            String((event && event.lineno) || 0);
+        });
+        window.addEventListener("load", function () {
+          window.setTimeout(function () {
+            var tower = document.getElementById("tower-list");
+            status.textContent =
+              "booted=" +
+              String(!!window.__studyTowerBooted) +
+              " floors=" +
+              String(tower ? tower.children.length : -1);
+          }, 1500);
+        });
+      })();
+    </script>
+    <script src="./app/app.js?v=20260423-13"></script>
+  </body>
+</html>

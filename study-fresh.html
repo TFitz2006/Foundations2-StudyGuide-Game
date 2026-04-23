@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Foundations II Study Tower</title>
+    <link rel="stylesheet" href="./app/styles.css?v=20260423-13" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Foundations II Final Tower</p>
+          <h1>Study game prototype for the full unit map</h1>
+          <p class="hero-text">
+            One floor per real unit from the notes and outlines, with review-packet
+            question styles driving the challenges.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-label">Units</span>
+            <strong class="stat-value">16</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Live Labs</span>
+            <strong class="stat-value">16</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Visual Priority</span>
+            <strong class="stat-value">Graphs</strong>
+          </div>
+        </div>
+      </header>
+
+      <div id="boot-status" class="boot-status" hidden></div>
+
+      <div class="app-layout">
+        <aside class="tower-panel">
+          <div class="panel-header">
+            <h2>Floors</h2>
+            <p>Select a unit to inspect the mechanic and lab.</p>
+          </div>
+          <div id="tower-list" class="tower-list"></div>
+        </aside>
+
+        <main class="workspace">
+          <section class="level-summary">
+            <div class="summary-header">
+              <div>
+                <p id="unit-kicker" class="eyebrow"></p>
+                <h2 id="unit-title"></h2>
+              </div>
+              <div id="unit-badge" class="unit-badge"></div>
+            </div>
+            <p id="unit-summary" class="summary-text"></p>
+
+            <div class="summary-grid">
+              <article class="summary-card">
+                <h3>Focus</h3>
+                <div id="unit-focus" class="chip-wrap"></div>
+              </article>
+              <article class="summary-card">
+                <h3>Review Packet Pattern</h3>
+                <ul id="unit-review" class="detail-list"></ul>
+              </article>
+              <article class="summary-card">
+                <h3>Mechanic</h3>
+                <p id="unit-mechanic"></p>
+              </article>
+              <article class="summary-card">
+                <h3>Friend Hook</h3>
+                <p id="unit-friend-hook"></p>
+              </article>
+            </div>
+          </section>
+
+          <section class="lab-panel">
+            <div class="panel-header">
+              <div>
+                <h2>Interactive Lab</h2>
+                <p id="lab-caption"></p>
+              </div>
+            </div>
+            <div id="lab-mount" class="lab-mount"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        function showBootStatus(message) {
+          var banner = document.getElementById("boot-status");
+          if (!banner) return;
+          banner.hidden = false;
+          banner.textContent = message;
+        }
+
+        window.addEventListener("error", function (event) {
+          var filename = String((event && event.filename) || "");
+          if (filename.indexOf("app/app.js") !== -1 || filename.indexOf("app.js") !== -1) {
+            showBootStatus("The study app failed to load in this tab. If this page still looks blank, send me this banner text.");
+          }
+        });
+
+        window.addEventListener("load", function () {
+          window.setTimeout(function () {
+            var tower = document.getElementById("tower-list");
+            if (tower && tower.children.length === 0 && !window.__studyTowerBooted) {
+              showBootStatus("The app shell loaded, but the floors did not. This means the browser did not execute app.js in this tab.");
+            }
+          }, 1200);
+        });
+      })();
+    </script>
+    <script src="./app/app.js?v=20260423-13"></script>
+  </body>
+</html>
